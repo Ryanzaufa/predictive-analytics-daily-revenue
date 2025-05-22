@@ -335,8 +335,13 @@ Pada visualisasi tersebut, terlihat bahwasanya 3 faktor yang sangat berpengaruh 
 
 ## Referensi
 [1] Statista. (2025). Coffee - Indonesia: Market Forecast. Diakses pada 22 Mei 2025 dari: https://www.statista.com/outlook/cmo/hot-drinks/coffee/indonesia
+
 [2] Sumara, R. (2024). Integrating SWOT Analysis and Business Model Canvas: A Strategic Approach for Indonesian Coffee Shops. eCo-Buss, 7(1), 588-589.
+
 [3] Kompas.id. (2025). Mengintip Tren dan Tantangan Bisnis Kopi 2025. Diakses pada 22 Mei 2025 dari: https://www.kompas.id/artikel/mengintip-tren-dan-tantangan-bisnis-kopi-2025
+
 [4] Wibowo, A. N. (2022). Strategi Pemasaran Kedai Kopi Raga, Kota Bekasi. Universitas Islam Negeri Syarif Hidayatullah Jakarta. Diakses pada 22 Mei 2025 dari: https://repository.uinjkt.ac.id/dspace/bitstream/123456789/65171/1/ANGGUN%20NOVANDRIE%20WIBOWO-FST.pdf
+
 [5] Ramli, R., et al. (2024). Revenue Forecasting for Small and Medium Enterprises Using Machine Learning Approaches: A Systematic Literature Review. Discover Artificial Intelligence.
+
 [6] Dicoding. Diakses pada 22 Mei 2025 dari: https://www.dicoding.com/academies/319-machine-learning-terapan
