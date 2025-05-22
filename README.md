@@ -56,6 +56,8 @@ Dataset memuat total **2000 baris data** dan **7 kolom fitur** diawal. Berikut 7
     Rentang: 50 – 1000 orang per jam.
 
 #### Identifikasi Missing dan Duplicate Values
+![image](https://github.com/user-attachments/assets/c842a8e9-d4a1-4df8-9988-abbbdfd29bdd)
+
 Dataset tidak memiliki **missing values** dan **duplicate values**.
 
 #### Analisis Deskriptif dan Univariate Analysis
@@ -78,6 +80,10 @@ Berikut informasi yang didapat dari informasi deskriptif tersebut:
 - Rata-rata **pengeluaran** yang dilakukan kafe untuk **marketing** dan **promosi** kurang lebih sebesar **252.6 dollar** per hari dengan pengeluaran tertinggi mencapai **499.74 dollar** dan yang terendah adalah **10.12 dollar**.
 - **Jumlah orang** yang berlalu lalang di depan kafe pernah mencapai di angka **999 orang/jam**.
 - **Total pendapatan** kafe pernah mencapai **5114.60 dollar** per harinya dan mencapai titik terendahnya yaitu **-58.95 dollar** per harinya. Rata- rata **total pendapatan** yang diraih kafe sebesar **1917.32 dollar** per hari.
+
+Berikut visualisasi persebaran data
+![dist_data](https://github.com/user-attachments/assets/08256e9e-062e-4227-bece-6a7b196a9439)
+
 
 Berikut informasi yang didapat dari grafik persebaran data:
 1. **Number of Customers Per Day:**
@@ -109,16 +115,25 @@ Berikut informasi yang didapat dari grafik persebaran data:
 
    - Distribusi agak skewed **skewed ke kanan** (right-skewed). Banyak nilai revenue harian berada di rentang 1000–2500. Ini menunjukkan bahwa hanya sebagian kecil hari yang menghasilkan pendapatan sangat tinggi, sedangkan mayoritas hari berada di kisaran pendapatan menengah-ke-rendah.
 
+Berikut ini visualisasi boxplot untuk identifikasi outlier
+![boxplot_graph](https://github.com/user-attachments/assets/4c4a24d8-47e3-4bf7-86a8-576505d0f985)
+
 Berikut informasi yang didapat dari visualisasi boxplot untuk identifikasi outlier:
 - **Daily Revenue:**
     - Terdapat beberapa outlier di nilai yang tinggi.
 
 #### Analisis Korelasi dan Multivariate Analysis
+![jumlah_karyawan_daily_revenue](https://github.com/user-attachments/assets/676617b3-287b-4426-afad-3de5912c381d)
+
+![mean_pengeluaran_daily_revenue](https://github.com/user-attachments/assets/1aa476dc-118c-435f-8b0b-6243bcebd9e4)
 
 Berikut hasil yang didapat dari grafik rata-rata *daily revenue* per jumlah karyawan dan rata-rata *daily revenue* per rata-rata pengeluaran pelanggan:
 - Rata-rata Daily Revenue **tidak menunjukkan pola** yang sangat jelas terhadap jumlah karyawan. **Terdapat fluktuasi nilai**, namun perbedaannya tidak terlalu signifikan. Artinya, menambah jumlah karyawan **tidak serta-merta meningkatkan** revenue secara **konsisten**.
 -  Rata-rata Daily Revenue terhadap jam operasional juga **tidak menunjukkan pola** yang sangat jelas. Beberapa jam operasional yang lebih pendek (seperti 9–11 jam) justru memberikan **mean revenue yang lebih tinggi**. Kemungkinan efisiensi operasional berada pada **jam-jam tertentu** (bukan semakin lama, semakin tinggi).
 
+![pairplot](https://github.com/user-attachments/assets/f9d11dab-889d-428c-b235-13c9c6c45606)
+
+![heatmap](https://github.com/user-attachments/assets/2cef102c-a670-4dbc-a3c2-f76434e12493)
 
 Berikut informasi mengenai korelasi yang didapat dari pairplot dan heatmap:
 - Pada pairplot, terlihat jelas bahwa hanya beberapa pasangan fitur yang menunjukkan korelasi visual kuat. **Number of Customers** dan **Average Order Value** adalah dua faktor paling relevan terhadap pendapatan. Fitur lainnya tampak memiliki korelasi lemah atau tidak signifikan secara visual.
@@ -128,14 +143,18 @@ Berikut informasi mengenai korelasi yang didapat dari pairplot dan heatmap:
 Tahap ini mencakup pembersihan dan transformasi data agar siap digunakan dalam pemodelan machine learning. Tahapan penting yang dimaksud seperti menangani missing values, menangani data duplikat, menangani outlier, menangani skewness, melakukan normalisasi atau standarisasi pada fitur numerik dan encoding fitur kategorikal.
 
 ### Penanganan Outlier
+![del_outlier](https://github.com/user-attachments/assets/e7fb481e-575a-42cd-8c90-c7df504f792b)
 
 Setelah menangani outlier yang ada pada *daily revenue*, struktur data mengalami sedikit perubahan. Jumlah data yang awalnya **2000** menjadi **1991** data.
 
 ### Mengecek Skewness Value
+![skew_val](https://github.com/user-attachments/assets/cf36a72f-960d-4095-beec-65976335e2aa)
 
 Skewness terbesar dialami oleh **kolom target/Daily Revenue** (0.593703), tetapi sepertinya nilai skewness tersebut tidak terlalu besar dan cenderung moderat, jadi mungkin untuk sekarang akan dibiarkan terlebih dahulu untuk melihat prediksi yang **lebih interpretatif**.
 
 ### Feature Engineering dan Selection
+![feat_eng](https://github.com/user-attachments/assets/6e4d15c3-5516-45f3-be0a-dd44d86a2c6e)
+
 Berdasarkan korelasi yang didapat, terdapat beberapa fitur baru yang bisa ditambahkan dengan proses **Feature Enggineering**. Fitur-fitur baru ini juga bisa membantu model menangkap hubungan non-linear yang tidak terlihat hanya dari korelasi linier antar fitur asli.
 - Berdasarkan korelasi yang tinggi antara jumlah pelanggan dan pendapatan, kamu membentuk fitur baru seperti **Revenue_per_Customer**, yang menunjukkan rata-rata kontribusi pendapatan dari setiap pelanggan. Ini membantu model memahami efisiensi pelanggan secara lebih baik.
 
@@ -146,6 +165,8 @@ Berdasarkan korelasi yang didapat, terdapat beberapa fitur baru yang bisa ditamb
 **Feature selection** dilakukan dengan tetap mempertahankan fitur asli yang paling relevan secara statistik dan memperkaya dengan fitur hasil engineering. Proses ini penting untuk menghindari **overfitting**, meningkatkan **efisiensi model**, serta mempertajam kemampuan **generalisasi** terhadap data baru.
 
 ### Splitting dan Scaling Data
+![train_test_split](https://github.com/user-attachments/assets/ec80d202-c7d6-4974-97ab-a4038e1786e2)
+
 Berdasarkan prinsip evaluasi model yang adil, data dibagi menjadi dua bagian: data latih (80%) dan data uji (20%) menggunakan `train_test_split()`. Hal ini dilakukan untuk memastikan bahwa performa model dapat diukur secara objektif terhadap data yang belum pernah dilihat sebelumnya (test set). Proses scaling menggunakan `StandardScaler` dilakukan agar semua fitur memiliki skala yang setara (mean = 0 dan standard deviation = 1). Ini penting terutama untuk algoritma yang sensitif terhadap skala fitur, seperti **Linear Regression**, **SVM**, **KNN**, dan **algoritma berbasis gradien**.
 
 ## Modeling
@@ -158,6 +179,8 @@ Setelah proses pelatihan, model dievaluasi menggunakan **data uji (testing)** un
 - **Root Mean Squared Error (RMSE)**: Mengukur akar dari rata-rata kuadrat kesalahan; memberikan penalti lebih besar untuk kesalahan yang besar.
 
 - **R-squared (R²)**: Menunjukkan seberapa besar variasi data yang dapat dijelaskan oleh model. Nilai mendekati 1 menandakan model memiliki performa yang baik.
+
+![eval_mode_func](https://github.com/user-attachments/assets/1aeff1ef-4f7a-4f9a-9500-cfcc8b624674)
 
 Fungsi `evaluate_model()` digunakan untuk menghitung dan menampilkan ketiga metrik ini untuk masing-masing model, sehingga dapat dibandingkan secara objektif guna menentukan model terbaik yang akan digunakan untuk prediksi lebih lanjut.
 
@@ -292,16 +315,21 @@ Hampir sama dengan Linear Regression, menandakan adanya kesalahan besar dalam be
 Cukup tinggi, namun masih di bawah Random Forest dan XGBoost.
 
 Berikut visualisasi perbandingan metriks evaluasi setiap model yang digunakan:
+![perbandingan_mae](https://github.com/user-attachments/assets/fa50db58-cd61-42a2-9eab-5355016228f0)
+![perbandingan_rmse](https://github.com/user-attachments/assets/cafdad2c-9c44-4de2-9104-d7481961d649)
+![perbandingan_rsquared](https://github.com/user-attachments/assets/e9d75c2a-7c8f-4dff-b74f-6b2f12752960)
 
 Berdasarkan hasil yang didapat, **XGBoost Regressor** dipilih sebagai model terbaik karena model tersebut memiliki nilai MAE dan RMSE terendah serta R² tertinggi  di antara semua model yang dijalankan. XGBoost memberikan keseimbangan terbaik antara kesalahan kecil **(MAE dan RMSE rendah)** dan kemampuan menjelaskan varians data **(R² tinggi)**. Hal ini membuat model ini sangat andal untuk **prediksi yang akurat**.
 
 ### Visualisasi Nilai Prediksi VS Aktual
 Berikut visualisasi nilai prediksi dan aktual
+![prediksi_vs_aktual](https://github.com/user-attachments/assets/ba538dfb-0a6d-4f2b-a2ea-87ae44aad228)
 
 Pola sebaran titik-titik sangat dekat dengan garis merah putus-putus (garis y = x), ini menunjukkan bahwa prediksi model sangat akurat, karena semakin dekat titik ke garis tersebut, semakin kecil selisih antara nilai aktual dan prediksi. Distribusi prediksi merata di sepanjang rentang nilai target, artinya model tidak hanya bagus di rentang rendah atau tinggi, tapi juga stabil di seluruh distribusi nilai target. Tidak terlihat pola lengkung atau deviasi besar yang bisa menunjukkan underfitting atau overfitting. Artinya model terkalibrasi dengan baik.
 
 ### Faktor yang Paling Mempengaruhi *Daily Revenue*
 Berikut visualisasi *feature importances*
+![feat_importances](https://github.com/user-attachments/assets/0a632788-da2d-49bd-b4fa-a29d9264d81d)
 
 Pada visualisasi tersebut, terlihat bahwasanya 3 faktor yang sangat berpengaruh pada nilai daily revenue pada suatu kedai kopi ialah pengeluaran pelanggan selama berada di kedai kopi, jumlah pelanggan yang datang ke kedai kopi per hari dan efisiensi marketing. **Kesimpulannya**, jika ingin mendapatkan hasil yang maksimal kedai harus meningkatkan **rata-rata pembelanjaan per pelanggan** melalui strategi seperti upselling atau promosi menu bernilai tinggi, menarik **lebih banyak pelanggan** ke kedai melalui peningkatan kualitas layanan, lokasi strategis, atau kerja sama komunitas dan mengoptimalkan **efektivitas kampanye marketing**, agar biaya promosi menghasilkan dampak maksimal terhadap jumlah kunjungan dan pembelian.
 
