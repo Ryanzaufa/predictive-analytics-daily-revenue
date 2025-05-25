@@ -4,7 +4,7 @@
 
 Kedai kopi merupakan salah satu sektor bisnis yang berkembang pesat dalam beberapa tahun terakhir. Berdasarkan data Statista, pasar kopi Indonesia menghasilkan pendapatan US$8.84 miliar dari *segmen out-of-home* (kedai kopi/restoran), dengan pertumbuhan CAGR 3.5% [1]. Pertumbuhan ini didorong oleh perubahan preferensi konsumen menuju gaya hidup urban dan konsumsi kopi sebagai bagian dari rutinitas harian [2]. Namun, fluktuasi pendapatan harian menjadi tantangan utama bagi pelaku bisnis, terutama dalam mengelola operasional dan pemasaran. Faktor-faktor seperti persaingan yang ketat, fluktuasi harga bahan baku, dan ketergantungan pada tren pasar dapat memengaruhi stabilitas pendapatan harian kedai kopi [3]. Sebagai contoh, studi kasus pada Kedai Kopi Raga di Bekasi menunjukkan bahwa persaingan dengan 21 kedai kopi dalam radius 1 km menyebabkan penurunan pendapatan yang signifikan [4]. Selain itu, fluktuasi harga bahan baku seperti biji kopi, susu, dan gula yang dipengaruhi oleh berbagai faktor seperti musim panen dan kebijakan impor turut menjadi tantangan dalam menjaga margin keuntungan [3].
 
-Untuk mengatasi tantangan tersebut, dibutuhkan pendekatan berbasis data yang mampu memprediksi pendapatan harian secara akurat dan adaptif. Seiring berkembangnya teknologi, machine learning telah menjadi salah satu solusi unggulan dalam mengolah data dan menghasilkan prediksi yang presisi. Machine learning telah terbukti efektif dalam berbagai konteks bisnis, termasuk dalam memprediksi pendapatan usaha kecil dan menengah berdasarkan data historis seperti jumlah pelanggan, pengeluaran harian, dan tren pembelian. Pendekatan machine learning seperti Random Forest, XGBoost, dan Neural Networks memberikan akurasi yang tinggi dalam peramalan pendapatan harian pada sektor UKM [5]. Oleh sebab itu, *machine learning* akan digunakan untuk memprediksi *daily revenue* pada suatu kedai kopi. Pada proyek ini, terdapat 5 algoritma yang akan digunakan, yaitu *Linear Regression*, *Decision Tree Regressor*, *Random Forest Regressor*, *XGBoost Regressor* dan *Support Vector Regression*. Lalu, dataset yang akan digunakan adalah dataset yang ada pada kaggle dengan nama [Coffee Shop Daily Revenue Prediction Dataset](https://www.kaggle.com/datasets/himelsarder/coffee-shop-daily-revenue-prediction-dataset/data).
+Untuk mengatasi tantangan tersebut, dibutuhkan pendekatan berbasis data yang mampu memprediksi pendapatan harian secara akurat dan adaptif. Seiring berkembangnya teknologi, machine learning telah menjadi salah satu solusi unggulan dalam mengolah data dan menghasilkan prediksi yang presisi. Machine learning telah terbukti efektif dalam berbagai konteks bisnis, termasuk dalam memprediksi pendapatan usaha kecil dan menengah berdasarkan data historis seperti jumlah pelanggan, pengeluaran harian, dan tren pembelian. Pendekatan machine learning seperti Random Forest, XGBoost, dan Neural Networks memberikan akurasi yang tinggi dalam peramalan pendapatan harian pada sektor UKM [5]. Oleh sebab itu, *machine learning* akan digunakan untuk memprediksi *daily revenue* pada suatu kedai kopi. Pada proyek ini, terdapat 5 algoritma yang akan digunakan, yaitu *Linear Regression*, *Decision Tree Regressor*, *Random Forest Regressor*, *XGBoost Regressor* dan *Support Vector Regression*. Lalu, dataset yang akan digunakan adalah dataset yang ada pada kaggle dengan nama [**Coffee Shop Daily Revenue Prediction Dataset**](https://www.kaggle.com/datasets/himelsarder/coffee-shop-daily-revenue-prediction-dataset/data).
 
 ## Business Understanding
 
@@ -23,11 +23,13 @@ Tujuan yang bisa didapatkan dari rumusan masalah:
 2. Menerapkan dan membandingkan beberapa model machine learning dalam melakukan prediksi, seperti Linear Regression, Decision Tree, Random Forest, SVR, dan XGBoost, dengan menggunakan metrik evaluasi seperti MAE, RMSE, dan R².
 
 ## Data Understanding
-Dataset yang digunakan untuk memprediksi *daily revenue* diambil dari [*Kaggle*](https://www.kaggle.com/). Dataset tersebut dipublikasikan oleh Himel Sarder. Dataset ini berisi data operasional harian dari sebuah kedai kopi fiktif, mencakup informasi seperti jumlah pelanggan, pengeluaran marketing, nilai rata-rata transaksi, hingga jam operasional dan jumlah karyawan. Dataset terdiri dari 1 file CSV yang memuat total **2000 baris data** dan **7 kolom fitur**, dengan target prediksi berupa daily revenue dalam satuan dolar. Dataset ini memiliki tingkat *usability* mencapai 10.00/10.00.
+Dataset yang digunakan untuk memprediksi *daily revenue* diambil dari [**Kaggle**]([https://www.kaggle.com/](https://www.kaggle.com/datasets/himelsarder/coffee-shop-daily-revenue-prediction-dataset/data). Dataset tersebut dipublikasikan oleh Himel Sarder. Dataset ini berisi data operasional harian dari sebuah kedai kopi fiktif, mencakup informasi seperti jumlah pelanggan, pengeluaran marketing, nilai rata-rata transaksi, hingga jam operasional dan jumlah karyawan. Dataset terdiri dari 1 file CSV yang memuat total **2000 baris data** dan **7 kolom fitur**, dengan target prediksi berupa daily revenue dalam satuan dolar. Dataset ini memiliki tingkat *usability* mencapai 10.00/10.00.
 
 ### *Exploratory Data Analysis* (EDA)
 
 #### Memahami Struktur Data
+![info_dataset](https://github.com/user-attachments/assets/da924985-2d1d-4ad1-aa24-a6b223c62943)
+
 Dataset memuat total **2000 baris data** dan **7 kolom fitur** diawal. Berikut 7 kolom fitur: 
 1. **Number of Customers Per Day**  
     Total jumlah pelanggan yang mengunjungi kedai kopi pada suatu hari tertentu.  
@@ -54,6 +56,11 @@ Dataset memuat total **2000 baris data** dan **7 kolom fitur** diawal. Berikut 7
     Jumlah orang yang melintasi kedai kopi setiap jam.  
     Variabel ini mencerminkan lokasi kedai serta potensinya untuk menarik pelanggan. 
     Rentang: 50 – 1000 orang per jam.
+   
+7. **Daily Revenue ($)**  
+    Ini adalah variabel dependen yang merepresentasikan total pendapatan yang dihasilkan oleh kedai kopi setiap hari. Nilai ini dihitung berdasarkan kombinasi jumlah kunjunga
+    pelanggan, rata-rata pengeluaran, serta faktor operasional lain seperti pengeluaran untuk promosi dan ketersediaan staf. 
+    Rentang: $200 – $10.000 per hari.
 
 #### Identifikasi Missing dan Duplicate Values
 ![image](https://github.com/user-attachments/assets/c842a8e9-d4a1-4df8-9988-abbbdfd29bdd)
@@ -195,11 +202,11 @@ memberitahu model untuk mencari nilai intercept terbaik, dan biasanya pilihan ya
 Decision Tree Regressor adalah model prediktif yang menggunakan struktur pohon untuk membagi dataset menjadi subset yang lebih kecil berdasarkan nilai fitur, sehingga menghasilkan prediksi nilai numerik di setiap daun (leaf). Model ini bekerja dengan membuat aturan keputusan (if-else) yang meminimalkan error pada setiap percabangan. Decision tree sangat fleksibel dan dapat menangkap hubungan non-linier antara fitur dan target, namun rentan terhadap overfitting jika tidak dilakukan proses pruning atau pengaturan kedalaman pohon.
 
 Model dilatih dengan `X_train` dan `y_train` sekaligus diuji menggunakan `X_test` dan `y_test` sebagai data uji. Model ini menggunakan parameter hasil dari cross-validation dan hyperparameter tuning dengan **optuna**. Berikut parameter yang digunakan:
-- max_depth = 27
+- max_depth = 12
 Menandakan kedalaman maksimal pohon keputusan cukup dalam untuk menangkap pola data secara detail, tapi belum terlalu dalam sehingga tidak overfitting.
 
-- min_samples_split = 4
-Minimal 4 data sampel harus ada pada suatu node agar bisa dilakukan split. Ini membantu mencegah pohon membelah terlalu kecil, sehingga model tidak terlalu kompleks.
+- min_samples_split = 6
+Minimal 6 data sampel harus ada pada suatu node agar bisa dilakukan split. Ini membantu mencegah pohon membelah terlalu kecil, sehingga model tidak terlalu kompleks.
 
 - min_samples_leaf = 4
 Setiap leaf node minimal harus memiliki 4 sampel, ini juga bentuk regularisasi agar tidak ada leaf terlalu kecil yang membuat model overfit.
@@ -208,11 +215,11 @@ Setiap leaf node minimal harus memiliki 4 sampel, ini juga bentuk regularisasi a
 Random Forest Regressor adalah model ensemble yang terdiri dari banyak decision tree yang dibangun menggunakan data subset acak dan subset fitur acak. Prediksi akhir diperoleh dengan merata-ratakan hasil dari seluruh pohon. Model ini memperbaiki kelemahan decision tree tunggal dengan cara mengurangi overfitting dan meningkatkan generalisasi. Random forest sangat efektif dalam menangani dataset dengan banyak fitur dan hubungan kompleks, serta cukup robust terhadap noise dan outlier.
 
 Model dilatih dengan `X_train` dan `y_train` sekaligus diuji menggunakan `X_test` dan `y_test` sebagai data uji. Model ini menggunakan parameter hasil dari cross-validation dan hyperparameter tuning dengan **optuna**. Berikut parameter yang digunakan:
-- n_estimators = 225
-Jumlah pohon dalam ensemble sebanyak 225, memberikan keseimbangan antara performa dan waktu komputasi.
+- n_estimators = 233
+Jumlah pohon dalam ensemble sebanyak 233, memberikan keseimbangan antara performa dan waktu komputasi.
 
-- max_depth = 14
-Maksimal kedalaman pohon 14, cukup dalam untuk menangkap pola yang kompleks tanpa overfitting berlebihan.
+- max_depth = 19
+Maksimal kedalaman pohon 19, cukup dalam untuk menangkap pola yang kompleks tanpa overfitting berlebihan.
 
 - min_samples_split = 2
 Setiap node minimal memiliki 2 sampel untuk bisa di-split, ini mengizinkan pohon untuk membelah hingga cukup rinci.
@@ -224,26 +231,26 @@ Leaf node minimal memiliki 1 sampel, memungkinkan pembentukan leaf yang sangat s
 XGBoost Regressor adalah algoritma berbasis gradient boosting yang dikembangkan untuk efisiensi dan performa tinggi. Model ini membangun pohon-pohon keputusan secara bertahap, di mana setiap pohon baru berusaha memperbaiki kesalahan dari pohon sebelumnya. XGBoost menggunakan teknik regularisasi, penanganan missing value, dan optimasi berbasis histogram untuk meningkatkan akurasi dan kecepatan pelatihan. XGBoost sangat populer dalam kompetisi machine learning karena kemampuannya dalam menangani dataset besar dan kompleks dengan performa tinggi.
 
 Model dilatih dengan `X_train` dan `y_train` sekaligus diuji menggunakan `X_test` dan `y_test` sebagai data uji. Model ini menggunakan parameter hasil dari cross-validation dan hyperparameter tuning dengan **optuna**. Berikut parameter yang digunakan:
-- n_estimators (267): Jumlah pohon keputusan yang digunakan cukup banyak, memungkinkan model menangkap pola data dengan baik.
+- n_estimators (300): Jumlah pohon keputusan yang digunakan cukup banyak, memungkinkan model menangkap pola data dengan baik.
 
 - max_depth (4): Kedalaman pohon relatif dangkal, ini membantu menghindari overfitting dengan membuat model lebih sederhana.
 
-- learning_rate (0.0724): Learning rate moderat, artinya setiap pohon berkontribusi secara bertahap dalam pembelajaran, menjaga kestabilan model.
+- learning_rate (0.1538): Learning rate moderat, artinya setiap pohon berkontribusi secara bertahap dalam pembelajaran, menjaga kestabilan model.
 
-- subsample (0.7892): Model menggunakan sekitar 79% data training secara acak setiap iterasi, teknik ini untuk menambah keanekaragaman model (bagging) dan mengurangi overfitting..
+- subsample (0.6901): Model menggunakan sekitar 69% data training secara acak setiap iterasi, teknik ini untuk menambah keanekaragaman model (bagging) dan mengurangi overfitting.
 
-- colsample_bytree (0.5564): Sekitar 56% fitur dipilih secara acak untuk setiap pohon, membantu meningkatkan generalisasi model.
+- colsample_bytree (0.8753): Sekitar 87% fitur dipilih secara acak untuk setiap pohon, membantu meningkatkan generalisasi model.
 
 
 ### 5. Support Vector Reggresor (SVR)
 Support Vector Regressor (SVR) adalah varian dari Support Vector Machine (SVM) yang digunakan untuk tugas regresi. SVR mencoba mencari garis (atau hiperplane) terbaik yang memiliki deviasi maksimal ε dari semua titik data dalam batas toleransi tertentu. Tujuannya bukan meminimalkan error secara langsung, tetapi menjaga agar sebagian besar prediksi berada dalam margin ε dari nilai sebenarnya. SVR sangat efektif untuk data berdimensi tinggi dan dapat menggunakan kernel untuk menangani hubungan non-linier, namun sensitif terhadap pemilihan parameter dan skala fitur.
 
 Model dilatih dengan `X_train_scaled` dan `y_train` sekaligus diuji menggunakan `X_test_scaled` dan `y_test` sebagai data uji. Model ini menggunakan parameter hasil dari cross-validation dan hyperparameter tuning dengan **optuna**. Berikut parameter yang digunakan:
-- C=27.8973
-Parameter regularisasi yang mengontrol trade-off antara kesalahan pada data pelatihan dan kompleksitas model. Nilai besar (27.9) menunjukkan model memberi toleransi lebih rendah terhadap kesalahan pelatihan, sehingga model berusaha fit lebih dekat ke data, tapi tetap menjaga generalisasi.
+- C=32.91127633637073
+Parameter regularisasi yang mengontrol trade-off antara kesalahan pada data pelatihan dan kompleksitas model. Nilai besar (32.9) menunjukkan model memberi toleransi lebih rendah terhadap kesalahan pelatihan, sehingga model berusaha fit lebih dekat ke data, tapi tetap menjaga generalisasi.
 
-- epsilon=0.01777
-Parameter ini menentukan margin toleransi kesalahan di dalam fungsi loss SVR — artinya, prediksi yang berbeda dari target dalam jarak epsilon tidak dianggap sebagai kesalahan. Nilai kecil 0.0177 menunjukkan model sangat sensitif terhadap kesalahan kecil, sehingga berusaha fit data dengan presisi tinggi.
+- epsilon=0.07958824918507265
+Parameter ini menentukan margin toleransi kesalahan di dalam fungsi loss SVR — artinya, prediksi yang berbeda dari target dalam jarak epsilon tidak dianggap sebagai kesalahan. Nilai kecil 0.0795 menunjukkan model sangat sensitif terhadap kesalahan kecil, sehingga berusaha fit data dengan presisi tinggi.
 
 - gamma='auto'
 Gamma menentukan jangkauan pengaruh tiap titik data terhadap model.
@@ -256,10 +263,10 @@ Setelah parameter model telah disesuaikan dengan hyperparameter tuning, selanjut
 | Model             | MAE        | RMSE       | R2       |
 |-------------------|------------|------------|----------|
 | Linear Regression | 123.648025 | 157.140958 | 0.974647 |
-| Decision Tree     | 135.127598 | 177.963686 | 0.967483 |
-| Random Forest     | 94.034535  | 126.680424 | 0.983523 |
-| XGBoost           | 64.296943  | 84.386651  | 0.992689 |
-| SVR               | 123.977898 | 158.003726 | 0.974368 |
+| Decision Tree     | 133.900078 | 175.833154 | 0.968256 |
+| Random Forest     | 94.366597  | 126.860647 | 0.983476 |
+| XGBoost           | 43.534817  | 57.049491  | 0.996658 |
+| SVR               | 123.934737 | 158.110272 | 0.974333 |
 
 Berdasarkan hasil yang didapat, **XGBoost Regressor** dipilih sebagai model terbaik karena model tersebut memiliki nilai MAE dan RMSE terendah serta R² tertinggi  di antara semua model yang dijalankan. XGBoost memberikan keseimbangan terbaik antara kesalahan kecil **(MAE dan RMSE rendah)** dan kemampuan menjelaskan varians data **(R² tinggi)**.
 
@@ -283,35 +290,35 @@ Menunjukkan adanya kesalahan prediksi besar yang cukup signifikan, karena **RMSE
 Model ini dapat menjelaskan sekitar 97.46% variabilitas dalam data target. Meski cukup baik, masih kalah dibanding model dengan **R²** lebih tinggi.
 
 #### 2. Decision Tree Regressor
-- **MAE**: 135.13
+- **MAE**: 133.900078
 Nilai **MAE** tertinggi di antara semua model, menunjukkan kesalahan rata-rata prediksi yang besar.
-- **RMSE**: 177.96:
+- **RMSE**: 175.833154:
 Juga merupakan nilai RMSE tertinggi, menunjukkan bahwa model sering melakukan prediksi dengan kesalahan besar.
-- **R²**: 0.9675:
+- **R²**: 0.968256:
 Merupakan R² terendah, yang berarti model ini memiliki kemampuan penjelasan variabilitas target yang paling lemah di antara semua model yang diuji.
 
 #### 3. Random Forest Regressor
-- **MAE**: 94.03
+- **MAE**: 94.366597
 Lebih baik dibanding Linear Regression dan Decision Tree. Artinya, rata-rata kesalahan prediksi lebih kecil.
-- **RMSE**: 126.68
+- **RMSE**: 126.860647
 Nilai ini juga lebih rendah, menunjukkan Random Forest mampu mengurangi kesalahan besar lebih baik dibanding dua model sebelumnya.
-- **R²**: 0.9835
+- **R²**: 0.983476
 Model ini dapat menjelaskan sekitar 98.35% variabilitas target. Hasil ini menunjukkan performa yang sangat baik.
 
 #### 4. XGBoost Regressor
-- Nilai **MAE (Mean Absolute Error)** Terendah: 64.296943
-**MAE XGBoost** adalah 64.30, yang berarti rata-rata kesalahan prediksi model ini paling kecil dibanding model lain. Semakin kecil MAE, semakin akurat model dalam memprediksi nilai sebenarnya.
-- Nilai **RMSE (Root Mean Squared Error)** Terendah: 84.386651
-**RMSE XGBoost** sebesar 84.39, yang juga merupakan nilai terkecil di antara semua model. RMSE lebih sensitif terhadap error besar, jadi nilai RMSE yang kecil menunjukkan model ini minim kesalahan prediksi besar.
-- Nilai **R² (Koefisien Determinasi)** Tertinggi: 0.992689
-R² XGBoost adalah 0.9927, mendekati 1. Ini berarti model dapat menjelaskan sekitar 99.27% variabilitas data target, menunjukkan fit yang sangat baik.
+- Nilai **MAE (Mean Absolute Error)** Terendah: 43.534817
+**MAE XGBoost** adalah 43.534817, yang berarti rata-rata kesalahan prediksi model ini paling kecil dibanding model lain. Semakin kecil MAE, semakin akurat model dalam memprediksi nilai sebenarnya.
+- Nilai **RMSE (Root Mean Squared Error)** Terendah: 57.049491
+**RMSE XGBoost** sebesar 57.049491, yang juga merupakan nilai terkecil di antara semua model. RMSE lebih sensitif terhadap error besar, jadi nilai RMSE yang kecil menunjukkan model ini minim kesalahan prediksi besar.
+- Nilai **R² (Koefisien Determinasi)** Tertinggi: 0.996658
+R² XGBoost adalah 0.996658, mendekati 1. Ini berarti model dapat menjelaskan sekitar 99.66% variabilitas data target, menunjukkan fit yang sangat baik.
 
 #### 5. Support Vector Reggresor (SVR)
-- **MAE**: 123.98
+- **MAE**: 123.934737
 Hampir setara dengan Linear Regression, menunjukkan kesalahan rata-rata yang cukup besar.
-- **RMSE**: 158.00
+- **RMSE**: 158.110272
 Hampir sama dengan Linear Regression, menandakan adanya kesalahan besar dalam beberapa prediksi.
-- **R²**: 0.9744
+- **R²**: 0.974333
 Cukup tinggi, namun masih di bawah Random Forest dan XGBoost.
 
 Berikut visualisasi perbandingan metriks evaluasi setiap model yang digunakan:
