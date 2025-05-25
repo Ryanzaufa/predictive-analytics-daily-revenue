@@ -23,14 +23,14 @@ Tujuan yang bisa didapatkan dari rumusan masalah:
 2. Menerapkan dan membandingkan beberapa model machine learning dalam melakukan prediksi, seperti Linear Regression, Decision Tree, Random Forest, SVR, dan XGBoost, dengan menggunakan metrik evaluasi seperti MAE, RMSE, dan R².
 
 ## Data Understanding
-Dataset yang digunakan untuk memprediksi *daily revenue* diambil dari [**Kaggle**]([https://www.kaggle.com/](https://www.kaggle.com/datasets/himelsarder/coffee-shop-daily-revenue-prediction-dataset/data). Dataset tersebut dipublikasikan oleh Himel Sarder. Dataset ini berisi data operasional harian dari sebuah kedai kopi fiktif, mencakup informasi seperti jumlah pelanggan, pengeluaran marketing, nilai rata-rata transaksi, hingga jam operasional dan jumlah karyawan. Dataset terdiri dari 1 file CSV yang memuat total **2000 baris data** dan **7 kolom fitur**, dengan target prediksi berupa daily revenue dalam satuan dolar. Dataset ini memiliki tingkat *usability* mencapai 10.00/10.00.
+Dataset yang digunakan untuk memprediksi *daily revenue* diambil dari [**Kaggle**](https://www.kaggle.com/datasets/himelsarder/coffee-shop-daily-revenue-prediction-dataset/data). Dataset tersebut dipublikasikan oleh Himel Sarder. Dataset ini berisi data operasional harian dari sebuah kedai kopi fiktif, mencakup informasi seperti jumlah pelanggan, pengeluaran marketing, nilai rata-rata transaksi, hingga jam operasional dan jumlah karyawan. Dataset terdiri dari 1 file CSV yang memuat total **2000 baris data** dan **7 kolom fitur**, dengan target prediksi berupa daily revenue dalam satuan dolar. Dataset ini memiliki tingkat *usability* mencapai 10.00/10.00.
 
 ### *Exploratory Data Analysis* (EDA)
 
 #### Memahami Struktur Data
 ![info_dataset](https://github.com/user-attachments/assets/da924985-2d1d-4ad1-aa24-a6b223c62943)
 
-Dataset memuat total **2000 baris data** dan **7 kolom fitur** diawal. Berikut 7 kolom fitur: 
+Dataset memuat total **2000 baris data** dan **7 kolom** diawal. Berikut uraian 7 kolom: 
 1. **Number of Customers Per Day**  
     Total jumlah pelanggan yang mengunjungi kedai kopi pada suatu hari tertentu.  
     Rentang: 50 – 500 pelanggan.
